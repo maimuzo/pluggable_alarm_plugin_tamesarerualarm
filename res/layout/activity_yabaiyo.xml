@@ -1,0 +1,26 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="みんなに教えてあげよう。今日は..."
+        />
+    <Button
+        android:id="@+id/yabaiyo_button_yabai"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ヤバい"
+        />
+    <Button
+        android:id="@+id/yabaiyo_button_yabakunai"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ヤバくない"
+        />
+</LinearLayout>
