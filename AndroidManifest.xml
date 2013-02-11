@@ -86,7 +86,8 @@ BaseAlarmActivityで使用しているので、これを継承するActivityは�
     	    	<action android:name="jp.androidapp.apps.pluggablealarm.plugin.plugin.tamesarerualarm.ACTION_ALARM" />
     	    </intent-filter>
     	</receiver> 
-        
+
+    	
     </application>
 
 </manifest>
