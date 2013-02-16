@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="snooze_interval_entries">
+        <item>1分</item>
+        <item>2分</item>
+        <item>3分</item>
+        <item>4分</item>
+        <item>5分</item>
+        <item>10分</item>
+        <item>15分</item>
+        <item>20分</item>
+        <item>30分</item>
+        <item>40分</item>
+        <item>50分</item>
+        <item>60分</item>
+        <item>90分</item>
+        <item>120分</item>
+    </string-array>
+    <string-array name="snooze_interval_entryvalues">
+        <item>60000</item>
+        <item>120000</item>
+        <item>180000</item>
+        <item>240000</item>
+        <item>300000</item>
+        <item>600000</item>
+        <item>900000</item>
+        <item>1200000</item>
+        <item>1800000</item>
+        <item>2400000</item>
+        <item>3000000</item>
+        <item>3600000</item>
+        <item>5400000</item>
+        <item>7200000</item>
+    </string-array>
+    <string-array name="volume_entries">
+        <item>1(最小)</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7(最大)</item>
+    </string-array>
+    <string-array name="volume_entryvalues">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+    </string-array>
+    <string-array name="temp_c_entries">
+        <item>10℃以下の場合</item>
+        <item>5℃以下の場合</item>
+        <item>0℃以下の場合</item>
+        <item>-1℃以下の場合</item>
+        <item>-2℃以下の場合</item>
+        <item>-3℃以下の場合</item>
+        <item>-4℃以下の場合</item>
+        <item>-5℃以下の場合</item>
+        <item>-6℃以下の場合</item>
+        <item>-7℃以下の場合</item>
+        <item>-8℃以下の場合</item>
+        <item>-9℃以下の場合</item>
+        <item>-10℃以下の場合</item>
+        <item>-11℃以下の場合</item>
+        <item>-12℃以下の場合</item>
+        <item>-13℃以下の場合</item>
+        <item>-14℃以下の場合</item>
+        <item>-15℃以下の場合</item>
+        <item>-16℃以下の場合</item>
+        <item>-17℃以下の場合</item>
+        <item>-18℃以下の場合</item>
+        <item>-19℃以下の場合</item>
+        <item>-20℃以下の場合</item>
+    </string-array>
+    <string-array name="temp_c_entryvalues">
+        <item>10</item>
+        <item>5</item>
+        <item>0</item>
+        <item>-1</item>
+        <item>-2</item>
+        <item>-3</item>
+        <item>-4</item>
+        <item>-5</item>
+        <item>-6</item>
+        <item>-7</item>
+        <item>-8</item>
+        <item>-9</item>
+        <item>-10</item>
+        <item>-11</item>
+        <item>-12</item>
+        <item>-13</item>
+        <item>-14</item>
+        <item>-15</item>
+        <item>-16</item>
+        <item>-17</item>
+        <item>-18</item>
+        <item>-19</item>
+        <item>-20</item>
+    </string-array>
+    <string-array name="windspeed_entries">
+        <item>0km/h以上の場合</item>
+        <item>5km/h以上の場合</item>
+        <item>10km/h以上の場合</item>
+        <item>15km/h以上の場合</item>
+        <item>20km/h以上の場合</item>
+        <item>35km/h以上の場合</item>
+        <item>40km/h以上の場合</item>
+        <item>50km/h以上の場合</item>
+    </string-array>
+    <string-array name="windspeed_entryvalues">
+        <item>0</item>
+        <item>5</item>
+        <item>10</item>
+        <item>15</item>
+        <item>20</item>
+        <item>35</item>
+        <item>40</item>
+        <item>50</item>
+    </string-array>
+    <string-array name="weather_category_entries">
+        <item>雨を対象にする</item>
+        <item>雪を対象にする</item>
+    </string-array>
+    <string-array name="weather_category_entryvalues">
+        <item>rain</item>
+        <item>snow</item>
+    </string-array>
+</resources>

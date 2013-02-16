@@ -1,10 +1,14 @@
 package jp.androidapp.apps.pluggablealarm.plugin.plugin.tamesarerualarm;
 
+import jp.androidapp.apps.pluggablealarm.plugin.plugin.tamesarerualarm.model.WeatherModel;
+import jp.androidapp.apps.pluggablealarm.plugin.plugin.tamesarerualarm.util.LocationUpdater;
+import jp.androidapp.apps.pluggablealarm.plugin.plugin.tamesarerualarm.util.WeatherUtil;
 import jp.androidapp.libs.pluggablealarm.AlarmData;
 import jp.androidapp.libs.pluggablealarm.AlarmUtil;
 import android.app.AlarmManager;
 import android.app.IntentService;
 import android.content.Intent;
+import android.location.Location;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -16,6 +20,7 @@ public class JudgeService extends IntentService {
 	public static final String JUDGE_ACTION = "jp.androidapp.tamesarerualarm.plugin.tenkiyomi.JUDGE_ACTION";
 	protected AlarmManager mAlarmManager;
 	protected AlarmData mAlarmData;
+	protected WeatherModel mModel;
 
     public JudgeService(){
         super(TAG);
@@ -30,11 +35,32 @@ public class JudgeService extends IntentService {
 		mAlarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
 
         if(JUDGE_ACTION.equals(actionName)){
-        	// TODO: 緯度経度を調べて
+        	// 緯度経度を調べて
+    		LocationUpdater locMan = new LocationUpdater(this);
+    		Location l = locMan.getLocation();
+    		if(null == l){
+    			throw new RuntimeException("do not get location still");
+    		}
+    		String lat = String.valueOf(l.getLatitude());
+    		String lon = String.valueOf(l.getLongitude());
+    		
+        	// 天気を調べて
+        	WeatherUtil.getCurrent(this, lat, lon, new WeatherUtil.OnAccessListener() {
+				@Override
+				public void onAccess(WeatherModel model) {
+					mModel = model;
+					judge();
+				}
+			});
         	// TODO: uuidを調べて
-        	// TODO: 天気を調べて
         	// TODO: ヤバイよサーバに問い合わせて
-        	// TODO: 今アラームを鳴らすか判断
+        }
+	}
+	
+	private void judge(){
+		// TODO: ヤバイよサーバの問い合わせ結果もあるならばココに追加
+		if(null != mModel){
+        	// 今アラームを鳴らすか判断
         	if(true){
         		// 今鳴らすならまずアラームを解除
         		AlarmUtil.unsetNextAlarm(this, mAlarmManager, mAlarmData);
@@ -44,7 +70,8 @@ public class JudgeService extends IntentService {
         		// TODO: 本来の時間はどうやって判断する?
         		AlarmUtil.setNextAlarm(this, mAlarmManager, mAlarmData, 1000 * 10);
         	}
-        }
+			
+		}
 	}
 	    
     private void kickAlarmActivity(){
