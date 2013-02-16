@@ -35,7 +35,7 @@
         <CheckBoxPreference android:defaultValue="true" android:summaryOff="早起きしない" android:summaryOn="早起きする" android:title="天候条件により早起きするか" android:key="need_to_harly_up"/>
         <ListPreference android:entries="@array/snooze_interval_entries" android:dependency="need_to_harly_up" android:defaultValue="60" android:key="harlyup_interval" android:title="条件を満たした時に早起きする時間" android:entryValues="@array/snooze_interval_entryvalues"/>
     </PreferenceCategory>
-    <PreferenceCategory android:title="早起き条件">
+    <PreferenceCategory android:title="早起き条件(AND条件)">
         <CheckBoxPreference android:defaultValue="true" android:summaryOff="考慮しない" android:summaryOn="考慮する" android:title="天気のカテゴリを考慮するか" android:key="need_to_use_weather_category"/>
         <CheckBoxPreference android:title="雨の天気カテゴリを考慮するか" android:key="need_to_use_rain_category" android:defaultValue="true" android:summaryOff="考慮しない" android:summaryOn="考慮する" android:dependency="need_to_use_weather_category"/>
         <CheckBoxPreference android:defaultValue="true" android:summaryOff="考慮しない" android:summaryOn="考慮する" android:title="雪の天気カテゴリを考慮するか" android:key="need_to_use_snow_category" android:dependency="need_to_use_weather_category"/>

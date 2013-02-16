@@ -247,7 +247,14 @@ public class PluginSettingActivity extends PreferenceActivity {
     private long getNextDelayInMillisForNextAlarm() {
     	int hour = mPrefSetting.getInt("time_Hour", 0);
     	int minute = mPrefSetting.getInt("time_Minute", 0);
-    	return AlarmUtil.getNextDelayInMillisForNextAlarm(this, hour, minute, getWeeks());
+    	// アラーム本来の時間
+    	long delay = AlarmUtil.getNextDelayInMillisForNextAlarm(this, hour, minute, getWeeks());
+    	if(mPrefSetting.getBoolean("need_to_harly_up", false)){
+    		// 早起きを考慮する
+    		String h = mPrefSetting.getString("harlyup_interval", "0");
+    		delay -= Long.valueOf(h);
+    	}
+    	return delay; 
     }
 	
     private String getWeeks() {
