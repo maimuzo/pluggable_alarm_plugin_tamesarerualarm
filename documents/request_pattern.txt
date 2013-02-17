@@ -1,0 +1,25 @@
+POST /addyabai
+uuid=xxxxxxx
+lat=xxxxxx
+lon=xxxxxxx
+
+http://free.worldweatheronline.com/feed/weather.ashx?q=43.01,141.41&format=json&num_of_days=5&key=2aad2a377b012628130202
+
+ざっくり説明
+http://www.worldweatheronline.com/free-weather-feed.aspx?menu=xmldata
+
+天気コード(weatherCode)一覧
+http://www.worldweatheronline.com/feed/wwoConditionCodes.xml
+
+GET /isyabai?lat=xxxxxx&lon=xxxxxxx
+
+1) 今日一発目で一昨日より古いデータを全て削除する
+2) 今日のデータに対してGeoHashでブロックに含まれて、かつデータ追加からN時間以内の人数をカウント
+3) 昨日のデータに対してGeoHashでブロックに含まれて、かつ昨日の自分のヤバイよから後N時間以内にヤバイよした人の数をカウントし、thankyou.totalに格納する
+
+JSONレスポンス
+{
+    count: 123
+    thankyou: 1245
+}
+
