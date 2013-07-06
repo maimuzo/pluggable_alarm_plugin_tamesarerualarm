@@ -1,4 +1,4 @@
-package jp.androidapp.apps.pluggablealarm.plugin.plugin.tamesarerualarm;
+package jp.androidapp.apps.pluggablealarm.plugin.tamesarerualarm;
 
 import jp.androidapp.libs.pluggablealarm.AlarmData;
 import android.content.BroadcastReceiver;

@@ -1,4 +1,4 @@
-package jp.androidapp.apps.pluggablealarm.plugin.plugin.tamesarerualarm.util;
+package jp.androidapp.apps.pluggablealarm.plugin.tamesarerualarm.util;
 
 import java.util.UUID;
 

@@ -5,17 +5,65 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:gravity="center"
     >
-
-    <TextView
-        android:layout_width="wrap_content"
+    <TextView 
+        android:id="@+id/alarm_text_date"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="天気詠みアラームがなる画面"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:gravity="center_horizontal"
         />
+    <DigitalClock
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="DigitalClock"
+        android:textSize="38sp"
+        android:textStyle="bold"
+        android:gravity="center_horizontal"
+        />
+    
     <Button
         android:id="@+id/alarm_plugin_button_stop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="止める"
+        android:text="アラームを止める"
+        android:layout_marginTop="32dp"
         />
+	<TextView 
+	    android:id="@+id/alarm_text_init"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:gravity="center_vertical"
+        android:layout_marginTop="16dp"
+        android:text="天気を調べています..."
+        />        
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="32dp"
+        >
+        <ImageView
+	        android:id="@+id/alarm_image_weather"
+	        android:layout_width="100dp"
+	        android:layout_height="100dp"
+	        android:scaleType="fitCenter"
+	        android:visibility="gone"
+            />
+	    <TextView 
+	        android:id="@+id/alarm_text_weather"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:textSize="24sp"
+	        android:gravity="center_vertical"
+	        android:layout_marginTop="16dp"
+	        android:layout_marginLeft="16dp"
+			android:visibility="gone"
+	        />        
+    </LinearLayout>
+
 </LinearLayout>

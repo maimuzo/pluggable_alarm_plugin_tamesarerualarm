@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">試されるプラグイン天気詠み</string>
-    <string name="setting_name">天気詠みプラグインアラーム</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="menu_settings">Settings</string>
+    <string name="app_name">試される目覚まし時計プラグイン</string>
+    <string name="setting_name">試される目覚まし時計</string>
+    <string name="init_max_volume">70</string>
+    <string name="init_min_volume">30</string>
 
 </resources>

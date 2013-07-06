@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="jp.androidapp.apps.pluggablealarm.plugin.plugin.tamesarerualarm"
+    package="jp.androidapp.apps.pluggablealarm.plugin.tamesarerualarm"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -12,8 +12,10 @@ BaseAlarmActivityで使用しているので、これを継承するActivityは�
  -->
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
     <uses-permission android:name="android.permission.DISABLE_KEYGUARD"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+	<uses-permission android:name="android.permission.INTERNET"/>
     
     <application
         android:allowBackup="true"
@@ -21,7 +23,7 @@ BaseAlarmActivityで使用しているので、これを継承するActivityは�
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="jp.androidapp.apps.pluggablealarm.plugin.plugin.tamesarerualarm.PluginSettingActivity"
+            android:name=".PluginSettingActivity"
             android:label="@string/setting_name" >
             
 <!-- 
@@ -54,42 +56,60 @@ BaseAlarmActivityで使用しているので、これを継承するActivityは�
 で良い。
 --> 
             <intent-filter>
-                <action android:name="jp.androidapp.apps.pluggablealarm.plugin.plugin.tamesarerualarm.ACTION_OPEN_ALARM_SETTING" />
+                <action android:name="jp.androidapp.apps.pluggablealarm.plugin.tamesarerualarm.ACTION_OPEN_ALARM_SETTING" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
             <intent-filter>
-                <action android:name="jp.androidapp.apps.pluggablealarm.plugin.plugin.tamesarerualarm.ACTION_NEXT_ALARM" />
+                <action android:name="jp.androidapp.apps.pluggablealarm.plugin.tamesarerualarm.ACTION_NEXT_ALARM" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
             <intent-filter>
-                <action android:name="jp.androidapp.apps.pluggablealarm.plugin.plugin.tamesarerualarm.ACTION_NEXT_SNOOZE" />
+                <action android:name="jp.androidapp.apps.pluggablealarm.plugin.tamesarerualarm.ACTION_NEXT_SNOOZE" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity
-            android:name="jp.androidapp.apps.pluggablealarm.plugin.plugin.tamesarerualarm.PluginAlarmActivity"
+            android:name=".PluginAlarmActivity"
             android:label="@string/app_name"
             />
         <activity
-            android:name="jp.androidapp.apps.pluggablealarm.plugin.plugin.tamesarerualarm.YabaiyoActivity"
+            android:name=".YabaiyoActivity"
             android:label="@string/app_name"
             />
         <service
-            android:name="jp.androidapp.apps.pluggablealarm.plugin.plugin.tamesarerualarm.JudgeService"
+            android:name=".JudgeService"
             android:label="@string/app_name"
             />
 <!-- 
 本体からAlarmManagerにEXTRAS_ALARM_SPECIAL_ACTIONで渡したActionでBroadcastするので、
 それを受け取りActivityなりServiceなりを起動するReceiverを用意する。
 当然EXTRAS_ALARM_SPECIAL_ACTIONで渡したこのプラグイン用のActionを受け付けるようにintent-filterを設定する
+
+"jp.androidapp.apps.pluggablealarm.plugin.plugin.tamesarerualarm.ACTION_ALARM"
+の部分は、このアプリ独自のものにすること。(パッケージ名+".ACTION_ALARM"推奨)
  -->
-    	<receiver android:name="jp.androidapp.apps.pluggablealarm.plugin.plugin.tamesarerualarm.PluginAlarmReceiver" android:process=":remote">
+    	<receiver android:name=".PluginAlarmReceiver" android:process=":remote">
             <intent-filter>
-    	    	<action android:name="jp.androidapp.apps.pluggablealarm.plugin.plugin.tamesarerualarm.ACTION_ALARM" />
+    	    	<action android:name="jp.androidapp.apps.pluggablealarm.plugin.tamesarerualarm.ACTION_ALARM" />
     	    </intent-filter>
     	</receiver> 
 
-    	
+<!-- 
+予約が消えてしまう再起動時や、時刻を調整した時に、有効なアラームを一気に再度予約するため、
+本体側で有効なアラームをEXTRAS_RESCHEDULE_SPECIAL_ACTIONで渡したActionにBroadcastするので、
+それを受け取りServiceなりを起動するReceiverを用意する。
+当然EXTRAS_RESCHEDULE_SPECIAL_ACTIONで渡したこのプラグイン用のActionを受け付けるようにintent-filterを設定する
+
+"jp.androidapp.apps.pluggablealarm.plugin.tamesarerualarm.ACTION_RESCHEDULE" 
+の部分は、このアプリ独自のものにすること。(パッケージ名+".ACTION_RESCHEDULE"推奨)
+ -->
+    	<receiver android:name=".AlarmRescheduleReceiver" android:process=":remote">
+            <intent-filter>
+    	    	<action android:name="jp.androidapp.apps.pluggablealarm.plugin.tamesarerualarm.ACTION_RESCHEDULE" />
+    	    </intent-filter>
+    	</receiver> 
+    	<service android:name=".RescheduleService" />
+    		
     </application>
 
 </manifest>
